@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   SimpleForm,
-  FormWithAllFields
+  FormWithAllFields,
+  FormWithRef
 } from './examples'
 import './App.css';
 
@@ -11,6 +12,8 @@ const App = () => {
     <>
       <h2>Simple Form</h2>
       <SimpleForm />
+      <h2>Form with Ref</h2>
+      <FormWithRef />
       <h2>Example with All Fields available</h2>
       <FormWithAllFields />
     </>
