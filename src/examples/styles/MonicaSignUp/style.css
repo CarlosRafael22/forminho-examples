@@ -1,0 +1,28 @@
+:root {
+    --white: #fff;
+    --accent-color: #b5838d;
+    --dark-accent-color: #a6757f;
+    --main-color: #6d6875;
+    --dark-main-color: #56505f;
+}
+
+.wave {
+    display: block;
+    animation: waving 3s infinite;
+}
+
+body {
+    background: rgb(255, 180, 162);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 180, 162, 1) 0%,
+      rgba(255, 180, 162, 1) 53%,
+      rgba(229, 152, 155, 1) 100%
+    );
+    color: var(--main-color);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+}
