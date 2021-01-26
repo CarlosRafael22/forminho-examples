@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.back-button {
+  border-radius: 50%;
+  margin: 0.5rem;
+  background-color: rgb(242, 242, 242);
+  border: 0px;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+.choose-button {
+  background-color: rgb(242, 242, 242);
+  border: 1px;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}

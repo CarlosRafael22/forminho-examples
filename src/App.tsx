@@ -1,21 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SimpleForm,
   FormWithAllFields,
-  FormWithRef
+  FormWithRef,
+  NeoForm,
+  MonicaSignUp
 } from './examples'
 import './App.css';
 
+type FormsEnum = { [key:string]: () => JSX.Element }
+
+const Forms: FormsEnum = {
+  SimpleForm,
+  FormWithAllFields,
+  FormWithRef,
+  NeoForm,
+  MonicaSignUp
+}
+
+const Header = ({chosenForm, callback}: {chosenForm: string, callback: Function}) => {
+  return (
+    <section>
+      {!chosenForm ? (
+        Object.keys(Forms).map(form => <button className='choose-button' onClick={() => callback(form)}>{form}</button>)
+      )
+      : (
+        <button className='back-button' onClick={() => callback(undefined)}><i className="fas fa-angle-left fa-2x" /></button>
+        // <MonicaSignUp />
+      )}
+    </section>
+  )
+}
+
 const App = () => {
+  const [chosenForm, setChosenForm] = useState<string>('')
+
+  console.log(' NO APPPPP ----- ', Forms, Object.keys(Forms), Forms['SimpleForm'])
+  const Component = Forms[chosenForm]
 
   return (
     <>
-      <h2>Simple Form</h2>
-      <SimpleForm />
-      <h2>Form with Ref</h2>
-      <FormWithRef />
-      <h2>Example with All Fields available</h2>
-      <FormWithAllFields />
+    <Header chosenForm={chosenForm} callback={setChosenForm} />
+    { chosenForm && <Component /> }
     </>
   )
 }
