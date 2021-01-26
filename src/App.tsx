@@ -4,7 +4,8 @@ import {
   FormWithAllFields,
   FormWithRef,
   NeoForm,
-  MonicaSignUp
+  MonicaSignUp,
+  LoginForm
 } from './examples'
 import './App.css';
 
@@ -15,7 +16,8 @@ const Forms: FormsEnum = {
   FormWithAllFields,
   FormWithRef,
   NeoForm,
-  MonicaSignUp
+  MonicaSignUp,
+  LoginForm
 }
 
 const Header = ({chosenForm, callback}: {chosenForm: string, callback: Function}) => {
@@ -34,14 +36,14 @@ const Header = ({chosenForm, callback}: {chosenForm: string, callback: Function}
 
 const App = () => {
   const [chosenForm, setChosenForm] = useState<string>('')
-
-  console.log(' NO APPPPP ----- ', Forms, Object.keys(Forms), Forms['SimpleForm'])
   const Component = Forms[chosenForm]
 
   return (
     <>
     <Header chosenForm={chosenForm} callback={setChosenForm} />
+    <main style={{width: '20rem', margin: '0 auto'}}>
     { chosenForm && <Component /> }
+    </main>
     </>
   )
 }
