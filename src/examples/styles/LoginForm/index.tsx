@@ -24,7 +24,7 @@ const LoginForm = () => {
                 >
                     <Field.Input name='email' type='text' placeholder='Email Address' className='form-field animation a3 workaround-w100' />
                     <Field.Input name='password' type='password' placeholder='Password' className='form-field animation a4 workaround-w100' />
-                    <Button>LOGIN</Button>
+                    <Button className='animation a6'>LOGIN</Button>
                     {/* <Button css={buttonStyle}>Login</Button> */}
                 </Form>
             </Forminho>
