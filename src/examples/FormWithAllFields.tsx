@@ -1,10 +1,14 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Forminho, Form, LiveValue, handleFieldError, Field } from 'forminho';
+import { Form, handleFieldError, Field } from 'forminho';
 
 
 const FieldsSignup = () => {
     const inputText = useRef(null);
     const buttonRef = useRef(null);
+    const formRef = useRef<HTMLFormElement>(null);
+    const [refresh, setRefresh] = useState(false);
+    const [liveFirstName, setLiveFirstName] = useState('');
+    const [liveLastName, setLiveLastName] = useState('');
     const [btVisible, setBtVisibility] = useState(false);
     const pText = useRef();
     // const btVisible = useRef(false);
@@ -18,7 +22,7 @@ const FieldsSignup = () => {
     const onValidationHandler = (values: any) => {
         console.log('VAI VALIDAR - ', values)
         if (values.firstName === values.lastName) {
-            throw Error('First and last names should be different');
+            return ['First and last names should be different']
         }
     }
 
@@ -68,11 +72,15 @@ const FieldsSignup = () => {
     console.log("Rendering");
     console.log("Refs ", inputText, buttonRef, pText);
 
+    // const { liveValues } = useForminho(['firstName', 'humanType'])
+    // console.log('LIVE VALUES DO HOOK: ', liveValues)
+    console.log('FORM REF:', formRef.current)
     return (
-        <Forminho>
-        <p>
-          You typed <LiveValue fieldName="firstName" />
-        </p>
+        <div>
+            <p>Last name: {liveLastName}</p>
+        <button onClick={() => setRefresh(!refresh)}>Refresh</button>
+        <p>You {formRef.current?.liveValues?.firstName}</p>
+        <p>You {liveFirstName}</p>
         <h1>Hello CodeSandbox</h1>
 
         <Form
@@ -91,8 +99,8 @@ const FieldsSignup = () => {
             onValidationHandler={onValidationHandler}
         >
           <label>Type your name </label>
-          <Field.Input name='firstName' type='text' label='Your first name' placeholder='Type your first name...' />
-            <Field.Input name='lastName' type='text' label='Your last name' placeholder='Type your last name...' />
+          <Field.Input liveUpdate={setLiveFirstName} name='firstName' type='text' label='Your first name' placeholder='Type your first name...' />
+            <Field.Input liveUpdate={setLiveLastName} name='lastName' type='text' label='Your last name' placeholder='Type your last name...' />
             {/* <Field.Input name='password' type='password' label='Your password' placeholder='Type your password...' /> */}
             <Field.Select name='team' label='Your team' options={['Chelsea', 'Arsenal']} />
             <Field.TextArea name='text' label='Talk' placeholder='Type anything...' />
@@ -138,12 +146,12 @@ const FieldsSignup = () => {
             </div>
           {btVisible && (
             <button ref={btUseRef} type="submit">
-              <LiveValue fieldName='firstName' />
+              {liveFirstName}
               {/* Send */}
             </button>
           )}
         </Form>
-      </Forminho>
+      </div>
     )
 }
 
