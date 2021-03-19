@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Forminho, Form, Field } from 'forminho'
+import { Form, Field } from 'forminho'
 
 const FormWithRef = () => {
     const [showInput, setShowInput] = useState(false)
@@ -29,28 +29,26 @@ const FormWithRef = () => {
 
     return (
         <div style={{width: '20rem', margin: '0 auto'}}>
-            <Forminho>
-                <Form
-                    initialValues={{ myname: '', lastName: '' }}
-                    // onSubmitHandler={onSubmitHandler}
-                    onChangeHandler={onChange}
-                >
-                <Field.Input name='myname' type='text' label='Your first name' placeholder='Type your first name...' />
-                { showInput && (
-                    <Field.Input
-                        ref={lastNameCallback}
-                        name='lastName'
-                        type='text' label='Your last name'
-                        placeholder='Type your last name...'
-                    />
-                )}
-                <button onClick={() => {
-                    if (firstRef.current) {
-                        firstRef.current.select()
-                    }
-                }}>Select 1st text</button>
-            </Form>
-        </Forminho>
+            <Form
+                initialValues={{ myname: '', lastName: '' }}
+                // onSubmitHandler={onSubmitHandler}
+                onChangeHandler={onChange}
+            >
+            <Field.Input name='myname' type='text' label='Your first name' placeholder='Type your first name...' />
+            { showInput && (
+                <Field.Input
+                    ref={lastNameCallback}
+                    name='lastName'
+                    type='text' label='Your last name'
+                    placeholder='Type your last name...'
+                />
+            )}
+            <button onClick={() => {
+                if (firstRef.current) {
+                    firstRef.current.select()
+                }
+            }}>Select 1st text</button>
+        </Form>
         <button onClick={() => {
             if (firstRef.current) {
                 firstRef.current.select()

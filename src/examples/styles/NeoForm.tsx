@@ -1,7 +1,7 @@
 // Component based on the sample code of a Neomorphic Form built by Swapnil on https://codepen.io/swapnet/pen/QWwPVwE
 // Its purpose was to build a similar form to test css styling for Forminho
 import React from 'react'
-import { Forminho, Form, Field, Button } from 'forminho'
+import { Form, Field, Button } from 'forminho'
 
 const NeoForm = () => {
   const onSubmitHandler = (values: any) => {
@@ -86,16 +86,14 @@ const NeoForm = () => {
 
   return (
       <div style={{width: '20rem', margin: '0 auto'}}>
-          <Forminho>
-              <Form
-                  initialValues={{ email: '', password: '' }}
-                  onSubmitHandler={onSubmitHandler}
-              >
-              <Field.Input css={inputStyle} name='email' type='text' placeholder='Email Address' />
-              <Field.Input css={inputStyle} name='password' type='password' placeholder='Password' />
-              <Button css={buttonStyle}><i className="icon fa fa-lock red"></i> <span className="red">Log in</span></Button>
-          </Form>
-      </Forminho>
+        <Form
+                initialValues={{ email: '', password: '' }}
+                onSubmitHandler={onSubmitHandler}
+            >
+            <Field.Input css={inputStyle} name='email' type='text' placeholder='Email Address' />
+            <Field.Input css={inputStyle} name='password' type='password' placeholder='Password' />
+            <Button css={buttonStyle}><i className="icon fa fa-lock red"></i> <span className="red">Log in</span></Button>
+        </Form>
     </div>
   )
 }
